@@ -19,6 +19,7 @@ public class FakePersonDataAccessService  implements PersonDao{
         return 1;
     }
 
+
     @Override
   public List<Person> selectAllPeople(){
         return DB;
@@ -30,7 +31,6 @@ public class FakePersonDataAccessService  implements PersonDao{
                 .filter(person -> person.getId().equals(id))
                 .findFirst();
     }
-
     @Override
     public int deletePersonById(UUID id) {
         Optional<Person> personMaybe = selectPersonById(id);
@@ -41,7 +41,6 @@ public class FakePersonDataAccessService  implements PersonDao{
         DB.remove(personMaybe.get());
         return 0;
     }
-
     @Override
     public int updatePersonById(UUID id, Person update) {
         return selectPersonById(id)
